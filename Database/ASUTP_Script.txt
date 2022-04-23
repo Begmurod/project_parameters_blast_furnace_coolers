@@ -1,0 +1,167 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tbParams](
+	[KodParameter] [int] NOT NULL,
+	[NameParameter] [nvarchar](4000) NOT NULL,
+	[Scale] [nvarchar](50) NULL,
+	[Mnemo] [nvarchar](50) NULL,
+	[Min] [real] NULL,
+	[Max] [real] NULL,
+ CONSTRAINT [PK_tbParams_1] PRIMARY KEY CLUSTERED 
+(
+	[KodParameter] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [IX_tbParams] UNIQUE NONCLUSTERED 
+(
+	[Mnemo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+CREATE TABLE [dbo].[tbValuesAVGDay](
+	[NPech] [tinyint] NOT NULL,
+	[KodParameter] [int] NOT NULL,
+	[Timer] [smalldatetime] NOT NULL,
+	[Value] [real] NULL,
+ CONSTRAINT [PK_tbValuesAVGDay] PRIMARY KEY CLUSTERED 
+(
+	[NPech] ASC,
+	[KodParameter] ASC,
+	[Timer] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+) 
+
+
+GO
+
+
+
+ALTER TABLE [dbo].[tbValuesAVGDay]  WITH CHECK ADD  CONSTRAINT [FK_tbValuesAVGDay_tbParams] FOREIGN KEY([KodParameter])
+REFERENCES [dbo].[tbParams] ([KodParameter])
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGDay] CHECK CONSTRAINT [FK_tbValuesAVGDay_tbParams]
+GO
+
+
+CREATE TABLE [dbo].[tbValuesAVGHour](
+	[NPech] [tinyint] NOT NULL,
+	[KodParameter] [int] NOT NULL,
+	[Timer] [smalldatetime] NOT NULL,
+	[Value] [real] NULL,
+ CONSTRAINT [PK_tbValuesAVGHour] PRIMARY KEY CLUSTERED 
+(
+	[NPech] ASC,
+	[KodParameter] ASC,
+	[Timer] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+) 
+
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGHour]  WITH CHECK ADD  CONSTRAINT [FK_tbValuesAVGHour_tbParams] FOREIGN KEY([KodParameter])
+REFERENCES [dbo].[tbParams] ([KodParameter])
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGHour] CHECK CONSTRAINT [FK_tbValuesAVGHour_tbParams]
+GO
+
+
+
+CREATE TABLE [dbo].[tbValuesAVGMonth](
+	[NPech] [tinyint] NOT NULL,
+	[KodParameter] [int] NOT NULL,
+	[Timer] [smalldatetime] NOT NULL,
+	[Value] [real] NULL,
+ CONSTRAINT [PK_tbValuesAVGMonth] PRIMARY KEY CLUSTERED 
+(
+	[NPech] ASC,
+	[KodParameter] ASC,
+	[Timer] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) 
+) 
+
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGMonth]  WITH CHECK ADD  CONSTRAINT [FK_tbValuesAVGMonth_tbParams] FOREIGN KEY([KodParameter])
+REFERENCES [dbo].[tbParams] ([KodParameter])
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGMonth] CHECK CONSTRAINT [FK_tbValuesAVGMonth_tbParams]
+GO
+
+
+
+
+
+
+
+
+CREATE TABLE [dbo].[tbValuesAVGSmenaDC](
+	[NPech] [tinyint] NOT NULL,
+	[KodParameter] [int] NOT NULL,
+	[Timer] [smalldatetime] NOT NULL,
+	[Value] [real] NULL,
+ CONSTRAINT [PK_tbValuesAVGSmenaDC] PRIMARY KEY CLUSTERED 
+(
+	[NPech] ASC,
+	[KodParameter] ASC,
+	[Timer] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+) 
+
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGSmenaDC]  WITH CHECK ADD  CONSTRAINT [FK_tbValuesAVGSmenaDC_tbParams] FOREIGN KEY([KodParameter])
+REFERENCES [dbo].[tbParams] ([KodParameter])
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGSmenaDC] CHECK CONSTRAINT [FK_tbValuesAVGSmenaDC_tbParams]
+GO
+
+
+
+
+CREATE TABLE [dbo].[tbValuesAVGSmenaDC12](
+	[NPech] [tinyint] NOT NULL,
+	[KodParameter] [int] NOT NULL,
+	[Timer] [smalldatetime] NOT NULL,
+	[Value] [real] NULL,
+ CONSTRAINT [PK_tbValuesAVGSmenaDC12] PRIMARY KEY CLUSTERED 
+(
+	[NPech] ASC,
+	[KodParameter] ASC,
+	[Timer] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+) 
+
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGSmenaDC12]  WITH CHECK ADD  CONSTRAINT [FK_tbValuesAVGSmenaDC12_tbParams] FOREIGN KEY([KodParameter])
+REFERENCES [dbo].[tbParams] ([KodParameter])
+GO
+
+ALTER TABLE [dbo].[tbValuesAVGSmenaDC12] CHECK CONSTRAINT [FK_tbValuesAVGSmenaDC12_tbParams]
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
